@@ -2,7 +2,8 @@
 -Tripal - A Platform for Making New Trip pals
 
 ## General info
-This project is under construction for impovement.
+Original created by Jarlzc and leeroydon1994
+This project is improved by Jarlzc
 
 ## Installation
 

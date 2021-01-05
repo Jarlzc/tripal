@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('../partials/head'); %>
+  <!-- Personal CSS -->
+  <link rel="stylesheet" href="css/myPage.css">
+
+  <!-- Ttile alters with the spots  -->
+  <title>My Profile - TriPal</title>
+</head>
+
+<body>
+  <header>
+    <%- include('../partials/headerlogged'); %>
+  </header>
+
+  <main>
+
+    <div class="profile-wrapper">
+
+      <div class="profile-container">
+        <h2 class="user-request-title font-weight-bold text-center">My Profile</h2>
+        <div class="profile-box row align-items-center justify-content-center">
+          <div class="profile-text col-md-12 col-lg-5 p-5">
+            <h6 class="text-left">User Name</h1>
+              <hr>
+              <p class="text-justify"><%= user.name %></p>
+          </div>
+
+          <div class="profile-picture-box col-md-12 col-lg-5 p-5 text-center">
+            <img class="profile-picture rounded-circle" src="<%= user.profilePic %>" alt="My profile picture">
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Client-side rendering using EJS template -->
+
+    <div class="user-request-wrapper">
+      <div class="user-request-container row align-items-center justify-content-start" id="user-request-container">
+
+      </div>
+    </div>
+
+  </main>
+
+
+
+  <footer>
+    <%- include('../partials/footer'); %>
+  </footer>
+
+  <!-- Script -->
+  <%- include('../partials/foot'); %>
+
+  <!-- Specific script -->
+  <script src="js/myPage.js"></script>
+
+
+</body>
+
+</html>

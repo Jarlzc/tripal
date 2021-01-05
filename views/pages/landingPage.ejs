@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('../partials/head'); %>
+
+  <!-- Icon -->
+  <link rel='icon' href='favicon/favicon.ico' type='image/x-icon'>
+
+  <!-- Personal CSS -->
+  <link rel="stylesheet" href="css/landingPage.css">
+  <link rel="stylesheet" href="css/header.css">
+
+
+  <!-- Ttile alters with the spots  -->
+  <title>TriPal - New Place, New Mates.</title>
+</head>
+
+<body>
+  <header>
+    <%- include('../partials/header'); %>
+  </header>
+
+  <main>
+
+    <!-- <a href="" class="typewrite" data-period="2000" data-type='[ "New places. New mates."]'><span class="wrap"></span></a> -->
+
+    <div class="cover-wrapper d-flex align-items-center justify-content-center">
+      <div class="overlay"></div>
+
+      <div class=" jumbotron bg-transparent">
+        <div class="cover-container text-center">
+          <h1 class="display-2 font-weight-bold">New Place.</h1>
+          <h1 class="display-2 font-weight-bold">New Mates.</h1>
+
+          <!-- JS - chqange bg images-->
+          <div class="cover-login-signup-button-box d-flex align-items-center justify-content-center">
+            <a class="btn btn-primary" href="/login" role="button">Login</a>
+            <a class="btn btn-primary" href="/signup" role="button">Sign Up</a>
+          </div>
+          <!-- Hidden elements for non-users
+          <div class="user-querying-box">
+            <form>
+              <div class="city-box form-group">
+                <label for="city">City</label>
+                <input type="text" class="form-control" id="city" placeholder="">
+              </div>
+
+              <div class="period-box d-flex align-items-center justify-content-center">
+                <div class="form-group">
+                  <label for="departing-date">Departing</label>
+                  <input type="date" class="date-start form-control" id="departing-date" placeholder="">
+                </div>
+                <div class="form-group">
+                  <label for="returning-date">Returning</label>
+                  <input type="date" class="form-control" id="returning-date" placeholder="">
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary" href=""><i class="fas fa-search"></i></button>
+            </form>
+          </div> -->
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="intro-wrapper">
+      <div class="intro-container row align-items-center justify-content-center">
+        <div class="intro-title-box col-md-10 col-lg-4 text-justify">
+          <h2 class="intro-title">Maybe the best trip mate-matching site for your expedition.</h2>
+          <p class="intro-text lead align-items-center justify-content-center mb-2">Sign up. Find the spots you'd love to visit. Chat with potential tripals.</p>
+          <p class="intro-text lead align-items-center justify-content-center mb-2">No pressure. No difficulty. Only friendship and happiness.</p>
+        </div>
+        <div class="intro-image col-md-10 col-lg-8 text-lg-right text-md-center text-sm-center text-xs-center">
+          <img class="travel-mate-photo" src="/assets/vectorImages/undraw_true_friends_c94g.svg" alt="mates">
+        </div>
+      </div>
+    </div>
+
+    <div class="function-wrapper">
+      <div class="function-container">
+        <h2 class="function-title text-center">Plan your trip. Find your pals.</h2>
+        <div class="function-boxes row align-items-top justify-content-center">
+
+          <div class="function-box col-lg-4 col-md-12 text-center" id="function-box-1">
+            <img src="../../assets/vectorImages/undraw_Map_light_3hjy.svg" class="function-img-top text-center" alt="function1" />
+            <div class="function-box-body">
+              <h3 class="fucntion-box-title align-items-center justify-content-center">Choose a spot to go.</h3>
+              <p class="function-box-text align-items-center justify-content-center">We've selected the must-go spots for you in eaach city. Much more to be picked soon.</p>
+            </div>
+          </div>
+
+          <div class="function-box col-lg-4 col-md-12 text-center" id="function-box-2">
+            <img src="../../assets/vectorImages/undraw_hang_out_h9ud.svg" class="function-img-top text-center" alt="function1" />
+            <div class="function-box-body">
+              <h3 class="fucntion-box-title align-items-center justify-content-center">Find mates.</h3>
+              <p class="function-box-text align-items-center justify-content-center">Post a request to your potential companions, or accept requests to join conversations.</p>
+            </div>
+          </div>
+
+          <div class="function-box col-lg-4 col-md-12 text-center" id="function-box-3">
+            <img src="../../assets/vectorImages/undraw_Around_the_world_re_n353.svg" class="function-img-top text-center" alt="function1" />
+            <div class="function-box-body">
+              <h3 class="fucntion-box-title align-items-center justify-content-center">Manage your trip.</h3>
+              <p class="function-box-text align-items-center justify-content-center">Review your iternerary. To go or not to go, that is the question.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <%- include('../partials/footer'); %>
+  </footer>
+
+  <!-- Script -->
+  <%- include('../partials/foot'); %>
+
+  <!-- Specific script -->
+  <script src="../../js/main.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+{
+  "name": "Group_project_TRIPAL",
+  "version": "1.0.0",
+  "description": "-- Tripal - A Platform for Making New Trip pals",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leeroydon1994/tripal_group_project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leeroydon1994/tripal_group_project/issues"
+  },
+  "homepage": "https://github.com/leeroydon1994/tripal_group_project#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-flash": "0.0.2",
+    "express-session": "^1.17.1",
+    "knex": "^0.21.15",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7",
+    "pg": "^8.5.1",
+    "socket.io": "^3.0.0"
+  }
+}

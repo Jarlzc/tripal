@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%-  include('../partials/head'); %>
+
+  <!-- Icon -->
+  <link rel='icon' href='../../favicon/favicon.ico' type='image/x-icon'>
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="../../css/city.css">
+  <link rel="stylesheet" href="../../css/header.css">
+
+  <!-- Ttile alters with the spots  -->
+  <title><%= currentCity[0].name %> - TriPal</title>
+</head>
+
+<!-- Upper part Background image link -->
+<style>
+  .city-intro-wrapper {
+    background-image: url('<%= currentCity[0].photo_link %>');
+  }
+</style>
+
+
+<body>
+  <header>
+    <%- include('../partials/headerlogged'); %>
+  </header>
+
+  <main>
+    <div class="city-intro-wrapper d-flex align-items-center justify-content-center">
+      <div class=" jumbotron bg-transparent">
+        <div class="container text-center">
+          <h1 class="display-2 font-weight-bold" id="city-name"><%= currentCity[0].name %></h1>
+        </div>
+      </div>
+      <div class="overlay"></div>
+
+    </div>
+
+    <div class="visit-wrapper">
+      <div class="visit-container">
+        <h1 class="visit-title text-center">Visit</h1>
+        <div class="place-boxes row align-items-top justify-content-left">
+
+          <% placesVisit.forEach((placeVisit) => { %>
+          <div class="visit-box col-4">
+            <div class="visit-card card ">
+              <div class="hidden-placeId-box">
+                <p class="hidden-placeId"><%= placeVisit.id %></p>
+              </div>
+              <img src="<%= placeVisit.place_thumb %>" class="visit-img card-img-top" alt="<%= placeVisit.place %>">
+              <div class="visit-card-body card-body">
+                <h5 class="visit-box-title card-title"><%= placeVisit.place %></h5>
+                <p class="visit-card-text card-text"><%= placeVisit.describe_s %></p>
+                <a href="/logged/travel/<%= currentCity[0].name %>/<%= placeVisit.id %>" class="place-button btn btn-primary ">Go</a>
+              </div>
+            </div>
+          </div>
+          <% }); %>
+
+        </div>
+
+      </div>
+    </div>
+    </div>
+
+    <div class="play-wrapper">
+      <div class="play-container">
+        <h1 class="play-title text-center">Play</h1>
+        <div class="place-boxes row align-items-top justify-content-left">
+
+          <% placesPlay.forEach((placePlay) => { %>
+          <div class="play-box col-4">
+            <div class="play-card card">
+              <div class="hidden-placeId-box">
+                <p class="hidden-placeId"><%= placePlay.id %></p>
+              </div>
+
+              <img src="<%= placePlay.place_thumb %>" class="play-img card-img-top" alt="<%= placePlay.place %>">
+              <div class="visit-card-body card-body">
+                <h5 class="visit-box-title card-title"><%= placePlay.place %></h5>
+                <p class="visit-card-text card-text"><%= placePlay.describe_s %></p>
+                <a href="/logged/travel/<%= currentCity[0].name %>/<%= placePlay.id %>" class="place-button btn btn-primary">Go</a>
+              </div>
+            </div>
+          </div>
+          <% }); %>
+
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <%- include('../partials/footer'); %>
+  </footer>
+
+  <!-- Script -->
+  <%- include('../partials/foot'); %>
+
+  <!-- Specific script -->
+  <script src="../../js/main.js"></script>
+
+  <script src="../../public/js/city.js"></script>
+
+
+</body>
+
+</html>

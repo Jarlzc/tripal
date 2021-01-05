@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('../partials/head'); %>
+
+  <!-- Icon -->
+  <link rel='icon' href='../../../favicon/favicon.ico' type='image/x-icon'>
+
+  <!-- Personal CSS -->
+  <link rel="stylesheet" href="../../../css/place.css">
+  <link rel="stylesheet" href="../../../css/header.css">
+
+  <!-- Ttile alters with the spots  -->
+  <title><%= currentPlace[0].place %>, <%= currentCity.name %> - TriPal</title>
+</head>
+
+<!-- Upper part Background image link -->
+<style>
+  .place-intro-wrapper {
+    background-image: url('<%= currentPlace[0].photo_url %>');
+  }
+</style>
+
+<body>
+  <header>
+    <%- include('../partials/headerlogged'); %>
+  </header>
+
+  <main class="place-wrapper">
+    <!-- Left-hand side -->
+    <div class="place-left-wrapper">
+      <div class="place-intro-wrapper d-flex align-items-center justify-content-center">
+        <div class="jumbotron bg-transparent">
+          <div class="place-intro-container text-center">
+            <!-- JS - chqange bg images-->
+            <h1 class="display-2 font-weight-bold"><%= currentPlace[0].place %>, <%= currentCity.name %></h1>
+          </div>
+        </div>
+        <div class="mask overlay"></div>
+      </div>
+
+      <div class="place-text-wrapper">
+        <div class="place-text-container">
+          <p class="place-text text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce viverra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce viverra.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce viverra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce viverra.
+            <%= currentPlace.describe_l%> </p>
+          <p class="place-text text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce viverra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce viverra.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce viverra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce viverra.</p>
+        </div>
+      </div>
+      <div class="chat-button d-flex justify-content-center">
+        <form class="from-control" action="/logged/travel/" method="POST">
+          <input type="hidden" value="<%= currentPlace[0].id %>" name="placeId">
+        <button href="/logged/travel/<%= currentCity.name %>/<%= currentPlace[0].id %>/1" onclick="window.open(this.href, 'mywin','left=20,top=20,width=450,height=700,toolbar=1,resizable=0'); return false;" class="place-button btn btn-primary">Chat</button>
+      </form>
+      </div>
+
+
+      <div class="recommendation-wrapper">
+        <div class="recommendation-container">
+          <h1 class="recommendation-title text-center">You may like...</h1>
+          <div class="place-boxes row align-items-top justify-content-center">
+
+            <% randomPlaces.forEach((randomPlace) => { %>
+            <div class="random-box col-4">
+              <div class="random-card card">
+                <img src="<%= randomPlace.place_thumb %>" class="random-img card-img-top" alt="<%= randomPlace.place %>">
+                <div class="random-card-body card-body">
+                  <h5 class="random-box-title card-title"><%= randomPlace.place %></h5>
+                  <p class="random-card-text card-text"><%= randomPlace.describe_s %></p>
+                  <a href="/logged/travel/<%= currentCity.name %>/<%= randomPlace.id %>" class="place-button btn btn-primary">Go</a>
+                </div>
+              </div>
+            </div>
+
+            <% }); %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Right-hand side -->
+    <div class="place-right">
+
+      <div class="place-make-request-textbox-wrapper">
+        <div class="place-request-card card">
+          <form id="add-request">
+            <h5 class="place-request-box-request card-title">Make Request</h5>
+            <div class="place-request-card-body card-body">
+
+              <div class="request-title-box">
+                <h6 class="place-request-card-subtitle card-text">Title</h6>
+                <label for="request-title">
+                  <textarea name="request-title" id="request-content" rows="1" cols="44" required></textarea>
+                  <!-- <textarea name="request-title" id="request-title" rows="1" cols="44"></textarea> -->
+                </label>
+              </div>
+
+              <div class="request-date-box">
+                <h6 class="place-request-card-subtitle card-text">Date</h6>
+                <label for="request-date">
+                  <input name="request-date" id="request-date" type="date" required>
+                  <!-- <textarea name="request-title" id="request-title" rows="1" cols="44"></textarea> -->
+                </label>
+              </div>
+
+              <div class="request-content-box">
+                <h6 class="place-request-card-subtitle card-text">Content</h6>
+                <label for="request-content">
+                  <textarea name="request-content" id="request-content" rows="10" cols="44" required></textarea>
+                </label>
+              </div>
+
+              <div class="chat-button">
+                <input type="submit" value="Post" class="btn btn-primary">
+              </div>
+
+            </div>
+          </form>
+
+        </div>
+      </div>
+
+
+      <div class="city-request-wrapper">
+        <div class="city-request-container d-flex flex-column align-items-center justify-content-center">
+
+          <!-- Client-side rendering using EJS template -->
+          <div class="place-request-box output" id="place-request-box">
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer>
+    <%- include('../partials/footer'); %>
+  </footer>
+
+  <!-- Script -->
+  <%- include('../partials/foot'); %>
+
+  <!-- Specific script -->
+
+  <script src="../../../js/mian.js"></script>
+  <script src="../../../js/place.js"></script>
+  <script src="../../../js/requests.js"></script>
+
+
+</body>
+
+</html>

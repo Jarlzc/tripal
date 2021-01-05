@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+/*******************************
+* individual style
+********************************/
+
+#chatInput {
+    padding: 0px !important;
+    height: 66px !important;
+    min-height: 65px !important;
+}
+
+#chatStatus1 {
+    font-size: 12px !important;
+}
+#chatStatus {
+    font-size: 12px !important;
+}
+
+#chatView {
+    padding-top: 65px !important;
+    display: block !important;
+}
+
+.chatRecord {
+    display: block;
+    font-size: 8pt;
+}

@@ -1,0 +1,45 @@
+/* header */
+html {
+  overflow-x: hidden;
+}
+
+.navbar {
+  padding: 0.2rem 1rem;
+  /* link to JQuery scroll effect */
+  transition: background-color 0.5s ease;
+  -webkit-transition: background-color 0.5s ease;
+  -moz-transition:background-color 0.5s ease;
+  -o-transition:background-color 0.5s ease;
+}
+
+.navbar-brand {
+  font-family: pt-sans-pro, sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  font-size: 2rem;
+  padding-left: 1rem;
+  letter-spacing: 0.75rem;
+  color: #FCFAF2!important;
+  transition: color 0.5s ease;
+  -webkit-transition: color 0.5s ease;
+  -moz-transition:color 0.5s ease;
+  -o-transition:color 0.5s ease;
+
+
+}
+
+.navbar-brand:hover, .nav-link:hover {
+  color:#e4e4e4!important
+}
+
+.nav-link {
+  font-size: 1.15rem;
+  font-family: pt-sans-pro, sans-serif;
+
+  font-weight: 400;
+  font-style: normal;
+  transition: color 0.25s ease;
+  margin: 0 1rem;
+  color: #FCFAF2!important;
+
+}

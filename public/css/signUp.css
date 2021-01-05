@@ -1,0 +1,47 @@
+.container {
+  max-width: 700px;
+}
+
+.border-top { border-top: 1px solid #e5e5e5; }
+.border-bottom { border-bottom: 1px solid #e5e5e5; }
+.border-top-gray { border-top-color: #adb5bd; }
+
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+.lh-condensed { line-height: 1.25; }
+
+html,
+body {
+  background-image:url('/assets/mates/landscape-4254269.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
+  height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6, label, p {
+  color: #FCFAF2;
+
+}
+
+.nav-link {
+  display: none;
+}
+
+.btn {
+  background-color: #bbdef0;
+  color: #FCFAF2;
+  font-weight: 500;
+  border-radius: 10rem;
+  border-width: 0;
+  margin: 0 auto;
+  width: 300px;
+  font-size: 16px;
+
+}
+
+.btn:hover {
+  transition: 0.5s;
+  background-color: #87a2af;
+}

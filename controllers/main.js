@@ -11,11 +11,15 @@ exports.getLoggedIndex = (req, res) => {
 };
 
 exports.postLoggedIndex = (req, res) => {
+   periodStart=req.body.departDate;
+   periodEnd =  req.body.returnDate;
+   console.log('start', periodStart, "End", periodEnd)
+  
   res.redirect(`/logged/travel/${req.body.cityInput}`);
 };
 
 exports.getProfile = (req, res) => {
-  let username = req.users.username;
+   userName = req.users.username;
   page.query_for_myPage(username, (data) => {
     res.render("pages/myPage", {
       name: username,
@@ -37,6 +41,8 @@ exports.getCities = (req, res) => {
 
 exports.getPlaces = (req, res) => {
   //query data from database
+  username = req.user.username;
+  userPlan.saveUserPlan(username, req.params.placeId, periodStart, periodEnd)
   let currentCity = {};
   currentCity.name = req.params.city;
   page.query_for_place(req.params.placeId, currentCity.name, (rows) => {

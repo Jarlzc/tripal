@@ -7,7 +7,7 @@ module.exports = {
     connection: {
       database: 'tripaldb',
         user: 'postgres',
-        password: 'postgres'
+        password: 'password'
     }
   },
 

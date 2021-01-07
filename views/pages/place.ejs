@@ -48,9 +48,16 @@
         </div>
       </div>
       <div class="chat-button d-flex justify-content-center">
-        <form class="from-control" action="/logged/travel/" method="POST">
+        <form >
+          <input type=hidden value="<%= currentPlace[0].id %>" id="placeId" name="placeId">
+          <input type=hidden value="<%= userName %>" id="username" name="username">
+          <label for= >Chatroom Title</label>
+          <input type="text" name="chat_title" class="form-control" id="chat_title" placeholder="">
+          <button class="place-button" id="start-new-chat">Start a New Chat</button>  
+        </form>
+        <form action="/logged/travel/" method="POST">
           <input type="hidden" value="<%= currentPlace[0].id %>" name="placeId">
-        <button href="/logged/travel/<%= currentCity.name %>/<%= currentPlace[0].id %>/1" onclick="window.open(this.href, 'mywin','left=20,top=20,width=450,height=700,toolbar=1,resizable=0'); return false;" class="place-button btn btn-primary">Chat</button>
+        <button href="/logged/travel/<%= currentCity.name %>/<%= currentPlace[0].id %>/1 " onclick="window.open(this.href, 'mywin','left=20,top=20,width=450,height=700,toolbar=1,resizable=0'); return false;" class="place-button btn btn-primary">Chat</button>
       </form>
       </div>
 
@@ -144,7 +151,7 @@
 
   <!-- Specific script -->
 
-  <script src="../../../js/mian.js"></script>
+  <script src="../../../js/main.js"></script>
   <script src="../../../js/place.js"></script>
   <script src="../../../js/requests.js"></script>
 

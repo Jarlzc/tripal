@@ -39,6 +39,8 @@ router.get('/logged/travel/:city/:placeId', isLoggedIn, mainController.getPlaces
 
 router.post('/logged/travel/', isLoggedIn, mainController.postUserPlan);
 
+router.post('/newrequest', mainController.postRequest)
+
 router.get('/logged/travel/:city/:placeId/:requestId', isLoggedIn, mainController.startChat);
 
 module.exports = router;

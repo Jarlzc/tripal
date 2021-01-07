@@ -4,8 +4,9 @@ exports.up = function(knex) {
         table.integer('user_id').unsigned();
         table.foreign('user_id').references('users.id');
         table.integer('place_id');
-        table.date('planned_date');
-        table.string('request_title').notNullable();
+        table.date('date_start');
+        table.date('date_end');
+        table.string('request_title');
         table.string('request_msg');
     })
 };

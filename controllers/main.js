@@ -7,7 +7,8 @@ exports.getIndex = (req, res) => {
   res.render("pages/landingPage");
 };
 exports.getLoggedIndex = (req, res) => {
-  res.render("pages/landingPageLogined");
+  userName = req.user.username
+  res.render("pages/landingPageLogined", {username: userName} );
 };
 
 exports.postLoggedIndex = (req, res) => {
@@ -19,7 +20,7 @@ exports.postLoggedIndex = (req, res) => {
 };
 
 exports.getProfile = (req, res) => {
-   userName = req.users.username;
+   userName = req.user.username;
   page.query_for_myPage(username, (data) => {
     res.render("pages/myPage", {
       name: username,
@@ -47,6 +48,7 @@ exports.getPlaces = (req, res) => {
   currentCity.name = req.params.city;
   page.query_for_place(req.params.placeId, currentCity.name, (rows) => {
     res.render("pages/place", {
+      userName: username,
       currentPlace: rows.currentPlace,
       randomPlaces: rows.randomPlace,
       currentCity: currentCity,
@@ -62,6 +64,10 @@ exports.postUserPlan = (req, res) => {
     let periodEnd = req.body.period_end;
     userPlan.saveUserPlan(username, placeId, periodStart, periodEnd)
     res.redirect(`/travel/${req.body}/${req.body}`);
+}
+
+exports.postRequest = (req, res) => {
+  console.log("postRequest Get",  req.body)
 }
 
 exports.startChat = (req, res) => {

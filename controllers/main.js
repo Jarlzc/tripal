@@ -68,6 +68,16 @@ exports.postUserPlan = (req, res) => {
 
 exports.postRequest = (req, res) => {
   console.log("postRequest Get",  req.body)
+  let username = req.user.username;
+  let placeId = req.body.placeId;
+  let periodStart = req.body.periodStart;
+  let periodEnd = req.body.periodEnd;
+  let chatTitle = req.body.chatTitle;
+  let chatDescribe = req.body.chatDescribe;
+
+  page.insertNewRequest(username, placeId, periodStart, periodEnd, chatTitle, chatDescribe, (rows)=> {
+    res.render()
+  })
 }
 
 exports.startChat = (req, res) => {

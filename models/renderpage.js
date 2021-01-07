@@ -110,28 +110,40 @@ function query_for_chatroom (reqParams, cb) {
 // });
 
 
-function insertNewRequest (userName, placeId, periodStart, periodEnd) {
+function insertNewRequest (userName, placeId, periodStart, periodEnd, chatTitle, chatDescribe, cb) {
   let query0 = knex
   .select("id").from("users").where("username", userName)
   
   query0.then((row)=> {
-    let userId = row.id;
+    let userId = row[0].id;
     let insert = knex('requests').insert({
       user_id: userId,
       place_id: placeId,
       date_start: periodStart,
-      date_end: periodEnd
+      date_end: periodEnd, 
+      request_title: chatTitle,
+      request_msg: chatDescribe
     }) 
-    insert.then(
-      
-    ).catch((err)=> console.log(err))
+    insert.then(_=> {
+      let query1 = knex.select("*")
+      .from("requests").where("place_id", placeId);
+
+      query1.then(rows=> {
+        cb(rows)
+      })
+
+    }).catch((err)=> console.log(err))
 
   }).catch((err)=> console.log(err) )
+
+  
+
+  
 }
 
 
 
-
+module.exports.insertNewRequest = insertNewRequest; 
 module.exports.query_for_city = query_for_city;
 module.exports.query_for_place = query_for_place;
 module.exports.query_for_myPage = query_for_myPage;

@@ -5,13 +5,17 @@ $(() => {
     let periodEnd = localStorage.getItem("returning");
     let placeId = $('#placeId').val();
     let userName = $('#username').val();
-    console.log('startnewchat', periodStart, periodEnd, placeId, userName)
+    let chatTitle = $('#chat_title').val();
+    let chatDescribe = $('#chat_discribe').val();
+    console.log('startnewchat', periodStart, periodEnd, placeId, userName, chatTitle)
 
     axios.post("/newrequest", {
         userName: userName,
         placeId: placeId,
         periodStart: periodStart,
-        periodEnd: periodEnd
+        periodEnd: periodEnd,
+        chatTitle: chatTitle,
+        chatDescribe: chatDescribe
     }).then(function (res) {
         console.log("response from api")
     })

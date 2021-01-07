@@ -51,8 +51,10 @@
         <form >
           <input type=hidden value="<%= currentPlace[0].id %>" id="placeId" name="placeId">
           <input type=hidden value="<%= userName %>" id="username" name="username">
-          <label for= >Chatroom Title</label>
+          <label for= >Chatroom title</label>
           <input type="text" name="chat_title" class="form-control" id="chat_title" placeholder="">
+          <label for= >Chatroom description</label>
+          <input type="text" name="chat_describe" class="form-control" id="chat_discribe" placeholder="">
           <button class="place-button" id="start-new-chat">Start a New Chat</button>  
         </form>
         <form action="/logged/travel/" method="POST">

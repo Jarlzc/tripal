@@ -33,16 +33,11 @@
                         <div class="form-group">
                             <div class = 'col-sm-10'>
                                 <h3><%=place %></h3>
-                                <label class="roomLabel" for="place">Rooms</label>
-                                <select class="form-control" id="rooms">
-                                    <option value="1">Room1</option>
-                                    <option value="2">Room2</option>
-                                    <option value="3">Room3</option>
-                                </select>
+                                <input type="hidden" value=<%=requestId %> name="requestId" id="requestId">
                             </div>
                             
                             <div class="col-sm-10">
-                                <label class="control-label" for="InputEmail">User Name</label>
+                                <label class="control-label" for="InputEmail">Display name</label>
                                 <input id="login_name" name="login_name" type="text" class="form-control" value=<%=username%>
                                     placeholder="Please enter your user name" autofocus />
                             </div>

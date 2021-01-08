@@ -67,11 +67,15 @@ function query_for_place(reqParams, city, cb) {
     .where("name", city)
     .andWhere("places.id", "!=", reqParams);
 
-  Promise.all([query0, query1])
+  let query2 = knex.select("*")
+      .from("requests").where("place_id", reqParams);
+
+  Promise.all([query0, query1, query2])
     .then((rows) => {
       output.currentPlace = rows[0];
       output.randomPlace = [rows[1][0], rows[1][1], rows[1][2]];
-      console.log(output);
+      output.requests = rows[2]
+      // console.log(rows[2]);
       cb(output);
     })
     .catch((err) => console.log("error: ", err));
@@ -110,7 +114,7 @@ function query_for_chatroom (reqParams, cb) {
 // });
 
 
-function insertNewRequest (userName, placeId, periodStart, periodEnd, chatTitle, chatDescribe, cb) {
+function insertNewRequest (userName, placeId, periodStart, periodEnd, chatTitle, chatDescribe) {
   let query0 = knex
   .select("id").from("users").where("username", userName)
   
@@ -124,20 +128,11 @@ function insertNewRequest (userName, placeId, periodStart, periodEnd, chatTitle,
       request_title: chatTitle,
       request_msg: chatDescribe
     }) 
-    insert.then(_=> {
-      let query1 = knex.select("*")
-      .from("requests").where("place_id", placeId);
-
-      query1.then(rows=> {
-        cb(rows)
-      })
-
-    }).catch((err)=> console.log(err))
+    insert.then(_=> {}).catch((err)=> console.log(err))
 
   }).catch((err)=> console.log(err) )
 
   
-
   
 }
 
@@ -148,3 +143,4 @@ module.exports.query_for_city = query_for_city;
 module.exports.query_for_place = query_for_place;
 module.exports.query_for_myPage = query_for_myPage;
 module.exports.query_for_chatroom = query_for_chatroom;
+

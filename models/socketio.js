@@ -24,9 +24,9 @@ module.exports = function (io) {
             //managing room information
             login_users[data.socket_id] = data.login_name;
             users_here = Object.values(login_users);
-            console.log(login_users);
-            console.log(users_here)
-            console.log(data.room_name)
+            // console.log(login_users);
+            // console.log(users_here)
+            console.log("room name", data.room_name)
             room = data.room_name
             if (users_in_room[room] === undefined) {
                 users_in_room[room] = [data.login_name]
@@ -45,6 +45,7 @@ module.exports = function (io) {
                 .join('users', 'chatroom_content.user_id', "=", 'users.id')
 
             query.then((rows) => {
+                    console.log('history get', rows)
                     io.to(socket.id).emit('history_say', {
                         rows: rows,
                         

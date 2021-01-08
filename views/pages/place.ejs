@@ -4,15 +4,17 @@
 <head>
   <%- include('../partials/head'); %>
 
-  <!-- Icon -->
-  <link rel='icon' href='../../../favicon/favicon.ico' type='image/x-icon'>
+    <!-- Icon -->
+    <link rel='icon' href='../../../favicon/favicon.ico' type='image/x-icon'>
 
-  <!-- Personal CSS -->
-  <link rel="stylesheet" href="../../../css/place.css">
-  <link rel="stylesheet" href="../../../css/header.css">
+    <!-- Personal CSS -->
+    <link rel="stylesheet" href="../../../css/place.css">
+    <link rel="stylesheet" href="../../../css/header.css">
 
-  <!-- Ttile alters with the spots  -->
-  <title><%= currentPlace[0].place %>, <%= currentCity.name %> - TriPal</title>
+    <!-- Ttile alters with the spots  -->
+    <title>
+      <%= currentPlace[0].place %>, <%= currentCity.name %> - TriPal
+    </title>
 </head>
 
 <!-- Upper part Background image link -->
@@ -34,7 +36,9 @@
         <div class="jumbotron bg-transparent">
           <div class="place-intro-container text-center">
             <!-- JS - chqange bg images-->
-            <h1 class="display-2 font-weight-bold"><%= currentPlace[0].place %>, <%= currentCity.name %></h1>
+            <h1 class="display-2 font-weight-bold">
+              <%= currentPlace[0].place %>, <%= currentCity.name %>
+            </h1>
           </div>
         </div>
         <div class="mask overlay"></div>
@@ -42,49 +46,94 @@
 
       <div class="place-text-wrapper">
         <div class="place-text-container">
-          <p class="place-text text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce viverra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce viverra.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce viverra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce viverra.
-            <%= currentPlace.describe_l%> </p>
-          <p class="place-text text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce viverra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce viverra.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce viverra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce viverra.</p>
+          <p class="place-text text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce viverra.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce viverra.Lorem ipsum dolor sit amet,
+            consectetur adipiscing elit. Fusce viverra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+            viverra.
+            <%= currentPlace.describe_l%>
+          </p>
+          <p class="place-text text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce viverra.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce viverra.Lorem ipsum dolor sit amet,
+            consectetur adipiscing elit. Fusce viverra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+            viverra.</p>
         </div>
       </div>
       <div class="chat-button d-flex justify-content-center">
-        <form >
+        <form class="new_request_form" >
           <input type=hidden value="<%= currentPlace[0].id %>" id="placeId" name="placeId">
           <input type=hidden value="<%= userName %>" id="username" name="username">
-          <label for= >Chatroom title</label>
+          <input type=hidden value="<%= currentCity.name %>" id="cityname" name="cityname">
+          <label for=>Chatroom title</label>
           <input type="text" name="chat_title" class="form-control" id="chat_title" placeholder="">
-          <label for= >Chatroom description</label>
+          <label for=>Chatroom description</label>
           <input type="text" name="chat_describe" class="form-control" id="chat_discribe" placeholder="">
-          <button class="place-button" id="start-new-chat">Start a New Chat</button>  
+          <button class="place-button" id="start-new-chat">Start a New Chat</button>
         </form>
-        <form action="/logged/travel/" method="POST">
+        <!-- <form action="/logged/travel/" method="POST"> 
           <input type="hidden" value="<%= currentPlace[0].id %>" name="placeId">
-        <button href="/logged/travel/<%= currentCity.name %>/<%= currentPlace[0].id %>/1 " onclick="window.open(this.href, 'mywin','left=20,top=20,width=450,height=700,toolbar=1,resizable=0'); return false;" class="place-button btn btn-primary">Chat</button>
-      </form>
+          <button href="/logged/travel/<%= currentCity.name %>/<%= currentPlace[0].id %>/1 "
+            onclick="window.open(this.href, 'mywin','left=20,top=20,width=450,height=700,toolbar=1,resizable=0'); return false;"
+            class="place-button btn btn-primary">Chat</button>
+        </form> -->
       </div>
 
+      <% if(requests.length> 0) {%>
+        <div class="requests__grid">
+          <% for(let reqs of requests) {%>
+            <div class="card request__item">
+              <div class="card__header">
+                <h1 class="request__title">
+                  <%= reqs.request_title %>
+                </h1>
+              </div>
+              <div class="card__content">
+                <h2 class="request__period">
+                  From <%=reqs.date_start%> to <%=reqs.date_end%>
+                </h2>
+                <p class="request__description">
+                  <%=reqs.request_msg%>
+                </p>
+              </div>
+              <div class="card__actions">
+                <a class="chat__button"
+                  href="/logged/travel/<%= currentCity.name %>/<%= currentPlace[0].id %>/<%=reqs.id%>"
+                  onclick="window.open(this.href, 'mywin','left=20,top=20,width=450,height=700,toolbar=1,resizable=0'); return false;">Enter
+                  chat</a>
+              </div>
+            </div>
+            <% } %>
+        </div>
+        <% } else { %>
+          <h1 class="request-title text-center">No requests yet</h1>
+          <% } %>
 
-      <div class="recommendation-wrapper">
-        <div class="recommendation-container">
-          <h1 class="recommendation-title text-center">You may like...</h1>
-          <div class="place-boxes row align-items-top justify-content-center">
+            <div class="recommendation-wrapper">
+              <div class="recommendation-container">
+                <h1 class="recommendation-title text-center">You may like...</h1>
+                <div class="place-boxes row align-items-top justify-content-center">
 
-            <% randomPlaces.forEach((randomPlace) => { %>
-            <div class="random-box col-4">
-              <div class="random-card card">
-                <img src="<%= randomPlace.place_thumb %>" class="random-img card-img-top" alt="<%= randomPlace.place %>">
-                <div class="random-card-body card-body">
-                  <h5 class="random-box-title card-title"><%= randomPlace.place %></h5>
-                  <p class="random-card-text card-text"><%= randomPlace.describe_s %></p>
-                  <a href="/logged/travel/<%= currentCity.name %>/<%= randomPlace.id %>" class="place-button btn btn-primary">Go</a>
+                  <% randomPlaces.forEach((randomPlace)=> { %>
+                    <div class="random-box col-4">
+                      <div class="random-card card">
+                        <img src="<%= randomPlace.place_thumb %>" class="random-img card-img-top"
+                          alt="<%= randomPlace.place %>">
+                        <div class="random-card-body card-body">
+                          <h5 class="random-box-title card-title">
+                            <%= randomPlace.place %>
+                          </h5>
+                          <p class="random-card-text card-text">
+                            <%= randomPlace.describe_s %>
+                          </p>
+                          <a href="/logged/travel/<%= currentCity.name %>/<%= randomPlace.id %>"
+                            class="place-button btn btn-primary">Go</a>
+                        </div>
+                      </div>
+                    </div>
+
+                    <% }); %>
                 </div>
               </div>
             </div>
-
-            <% }); %>
-          </div>
-        </div>
-      </div>
     </div>
     <!-- Right-hand side -->
     <div class="place-right">
@@ -151,11 +200,11 @@
   <!-- Script -->
   <%- include('../partials/foot'); %>
 
-  <!-- Specific script -->
+    <!-- Specific script -->
 
-  <script src="../../../js/main.js"></script>
-  <script src="../../../js/place.js"></script>
-  <script src="../../../js/requests.js"></script>
+    <script src="../../../js/main.js"></script>
+    <script src="../../../js/place.js"></script>
+    <script src="../../../js/requests.js"></script>
 
 
 </body>

@@ -13,7 +13,8 @@ $(function () {
   // login click
   $("#btnLogin").on("click", function (e) {
     my_login_name = $("#login_name").val();
-    my_room = $("#rooms").val();
+    my_room = $("#requestId").val();
+    console.log('myroom', my_room)
 
     if ($("#loginForm").valid() === true) {
       // close login and show chat
@@ -118,12 +119,12 @@ function initSocket() {
     console.log(my_login_name);
 
     for (let i = 0; i < rows.length; i++) {
-      if (rows[i].name === my_login_name) {
+      if (rows[i].username === my_login_name) {
         console.log(`right ${rows[i].chat_message}, ${rows[i].chat_time}, ${rows[i].name}`);
-        appendChat(rows[i].chat_message, "right", "", rows[i].chat_time);
+        appendChat(rows[i].chat_msg, "right", "", rows[i].msg_time);
       } else {
         console.log(`left ${rows[i].chat_message}, ${rows[i].chat_time}, ${rows[i].name}`);
-        appendChat(rows[i].chat_message, "left", rows[i].name, rows[i].chat_time);
+        appendChat(rows[i].chat_msg, "left", rows[i].username, rows[i].msg_time);
       }
     }
   });
